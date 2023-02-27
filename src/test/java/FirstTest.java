@@ -42,7 +42,7 @@ public class FirstTest {
         $x("//tr[contains(.,'Student Email')]/td[last()]").shouldHave(text("kosnireva9469@gmail.com"));
         $x("//tr[contains(.,'Gender')]/td[last()]").shouldHave(text("Female"));
         $x("//tr[contains(.,'Mobile')]/td[last()]").shouldHave(text("7961822211"));
-        //$x("//tr[contains(.,'Date of Birth')]/td[last()]").shouldHave(text("25 February,1994"));
+        $x("//tr[contains(.,'Date of Birth')]/td[last()]").shouldHave(text("09 March,2000"));
         $x("//tr[contains(.,'Subjects')]/td[last()]").shouldHave(text("Economics"));
         $x("//tr[contains(.,'Hobbies')]/td[last()]").shouldHave(text("Reading"));
         $x("//tr[contains(.,'Picture')]/td[last()]").shouldHave(text("pic.png"));
