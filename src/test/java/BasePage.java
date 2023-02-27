@@ -35,10 +35,12 @@ public class BasePage {
         return this;
     }
 //не понимаю, почему не вычищает поле даты
-    public BasePage setDate (String date) {
+    public BasePage setDate (String date, String month, String year ) {
         SelenideElement el = $x("//input[@id='dateOfBirthInput']");
-        el.setValue("");
-        el.setValue(date).pressEnter();
+        el.click();
+        $x("//select[@class='react-datepicker__month-select']").selectOptionContainingText(month);
+        $x("//select[@class='react-datepicker__year-select']").selectOptionContainingText(year);
+        $x("//div[contains(@class, 'react-datepicker__day')][text()="+ date + "]").click();
         return this;
     }
 

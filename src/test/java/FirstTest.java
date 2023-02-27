@@ -19,12 +19,15 @@ public class FirstTest {
     void firstEnterTest() {
         page.openUrl("/automation-practice-form");
         executeJavaScript("$('footer').css('position','relative')"); //костыльчик, просто убрать футер не помогло
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
         page.setFirstName("Kseniya");
         page.setLastName("Kosnyreva");
         page.setEmail("kosnireva9469@gmail.com");
         page.setGender("Female");
         page.setPhone("7961822211");
-        page.setDate("25 Feb 1994");
+        page.setDate("9","March","2000");
         page.setSubject("Economics");
         page.setHobbies("Reading");
         page.uploadFiles("src/test/resources/pic.png"); //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
