@@ -40,7 +40,7 @@ public class BasePage {
         $x("//input[@id='userNumber']").setValue(phone);
         return this;
     }
-//не понимаю почему не вычищает поле даты
+//не понимаю, почему не вычищает поле даты
     public BasePage setDate (String date) {
         SelenideElement el = $x("//input[@id='dateOfBirthInput']");
         el.setValue("");
@@ -73,7 +73,7 @@ public class BasePage {
         $x("//input[@id='react-select-3-input']").setValue(state).pressEnter();
         return this;
     }
-//была мысль в трай кетч заверуть в условный оператор учесть неактивность поля из-за невыбранного штата
+//была мысль заверуть в условный оператор, учесть неактивность поля из-за невыбранного штата
     public BasePage setCity (String city){
         $x("//input[@id='react-select-4-input']").setValue(city).pressEnter();
         return this;
