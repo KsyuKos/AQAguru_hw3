@@ -1,12 +1,6 @@
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
