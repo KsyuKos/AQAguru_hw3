@@ -1,16 +1,14 @@
-import com.codeborne.selenide.Condition;
+package pages;
+
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.exactOwnText;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class BasePage {
-
-    protected String numberDay;
 
     private final SelenideElement
         firstName =  $("#firstName"),
@@ -59,7 +57,6 @@ public class BasePage {
     }
 //не понимаю, почему не вычищает поле даты
     public BasePage setDate (String date, String month, String year ) {
-        numberDay = date;
         InputBD.click();
         monthBD.selectOptionContainingText(month);
         yearBD.selectOptionContainingText(year);
