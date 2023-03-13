@@ -18,20 +18,36 @@ public class FirstTest {
 
     @Test
     void firstEnterTest() {
+
+        String firstName = "Kseniya",
+                lastName = "Kosnyreva",
+                emailAddress = "kosnireva9469@gmail.com",
+                gender = "Female",
+                phoneNumber = "7961822211",
+                InputBD = "9",
+                monthBD = "March",
+                yearBD = "2000",
+                elemSubject = "Economics",
+                hobbies = "Reading",
+                picture = "src/test/resources/pic.png",
+                currentAddress = "Я гражданин мира",
+                elemState = "Haryana",
+                elemCity = "Karnal";
+
         registrationPage.openUrl("/automation-practice-form");
 
-        registrationPage.setFirstName("Kseniya")
-                .setLastName("Kosnyreva")
-                .setEmail("kosnireva9469@gmail.com")
-                .setGender("Female")
-                .setPhone("7961822211")
-                .setDate("9","March","2000")
-                .setSubject("Economics")
-                .setHobbies("Reading")
-                .uploadFiles("src/test/resources/pic.png") //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
-                .setCurrentAddress("Я гражданин мира")
-                .setState("Haryana")
-                .setCity("Karnal")
+        registrationPage.setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(emailAddress)
+                .setGender(gender)
+                .setPhone(phoneNumber)
+                .setDate(InputBD, monthBD, yearBD)
+                .setSubject(elemSubject)
+                .setHobbies(hobbies)
+                .uploadFiles(picture) //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
+                .setCurrentAddress(currentAddress)
+                .setState(elemState)
+                .setCity(elemCity)
                 .clickSubmit();
 
         $x("//div[@class='table-responsive']").shouldBe(exist);
