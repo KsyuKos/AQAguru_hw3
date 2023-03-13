@@ -1,7 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pages.BasePage;
+import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -14,29 +14,25 @@ public class FirstTest {
         Configuration.browserSize = "1920x1080";
     }
 
-    BasePage page = new BasePage();
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void firstEnterTest() {
-        page.openUrl("/automation-practice-form");
-        executeJavaScript("$('footer').css('position','relative')"); //костыльчик, просто убрать футер не помогло
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        registrationPage.openUrl("/automation-practice-form");
 
-        page.setFirstName("Kseniya");
-        page.setLastName("Kosnyreva");
-        page.setEmail("kosnireva9469@gmail.com");
-        page.setGender("Female");
-        page.setPhone("7961822211");
-        page.setDate("9","March","2000");
-        page.setSubject("Economics");
-        page.setHobbies("Reading");
-        page.uploadFiles("src/test/resources/pic.png"); //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
-        page.setCurrentAddress("Я гражданин мира");
-        page.setState("Haryana");
-        page.setCity("Karnal");
-
-        page.clickSubmit();
+        registrationPage.setFirstName("Kseniya")
+                .setLastName("Kosnyreva")
+                .setEmail("kosnireva9469@gmail.com")
+                .setGender("Female")
+                .setPhone("7961822211")
+                .setDate("9","March","2000")
+                .setSubject("Economics")
+                .setHobbies("Reading")
+                .uploadFiles("src/test/resources/pic.png") //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
+                .setCurrentAddress("Я гражданин мира")
+                .setState("Haryana")
+                .setCity("Karnal")
+                .clickSubmit();
 
         $x("//div[@class='table-responsive']").shouldBe(exist);
         $x("//tr[contains(.,'Student Name')]/td[last()]").shouldHave(text("Kseniya Kosnyreva"));

@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.exactOwnText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class BasePage {
+public class RegistrationPage {
 
     private final SelenideElement
         firstName =  $("#firstName"),
@@ -29,34 +29,37 @@ public class BasePage {
 
     public void openUrl(String url) {
         open(url);
+        executeJavaScript("$('footer').css('position','relative')"); //костыльчик, просто убрать футер не помогло
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 
-    public BasePage setFirstName (String fname) {
+    public RegistrationPage setFirstName (String fname) {
         firstName.setValue(fname);
         return this;
     }
 
-    public BasePage setLastName (String lname) {
+    public RegistrationPage setLastName (String lname) {
         lastName.setValue(lname);
         return this;
     }
 
-    public BasePage setEmail (String email) {
+    public RegistrationPage setEmail (String email) {
         emailAddress.setValue(email);
         return this;
     }
 
-    public BasePage setGender (String gender) {
+    public RegistrationPage setGender (String gender) {
         $(byText(gender)).click();
         return this;
     }
 
-    public BasePage setPhone (String phone) {
+    public RegistrationPage setPhone (String phone) {
         phoneNumber.setValue(phone);
         return this;
     }
 //не понимаю, почему не вычищает поле даты
-    public BasePage setDate (String date, String month, String year ) {
+    public RegistrationPage setDate (String date, String month, String year ) {
         InputBD.click();
         monthBD.selectOptionContainingText(month);
         yearBD.selectOptionContainingText(year);
@@ -65,40 +68,39 @@ public class BasePage {
         return this;
     }
 
-    public BasePage setSubject (String subject) {
+    public RegistrationPage setSubject (String subject) {
         elemSubject.setValue(subject).pressEnter();
         return this;
     }
 
-    public BasePage setHobbies (String hobbies) {
+    public RegistrationPage setHobbies (String hobbies) {
         $(byText(hobbies)).click();
         return this;
     }
 
-    public BasePage uploadFiles (String url) {
+    public RegistrationPage uploadFiles (String url) {
         File file = new File(url);
         picture.uploadFile(file);
         return this;
     }
 
-    public BasePage setCurrentAddress (String address) {
+    public RegistrationPage setCurrentAddress (String address) {
         currentAddress.setValue(address);
         return this;
     }
 
-    public BasePage setState (String state) {
+    public RegistrationPage setState (String state) {
         elemState.setValue(state).pressEnter();
         return this;
     }
 //была мысль заверуть в условный оператор, учесть неактивность поля из-за невыбранного штата
-    public BasePage setCity (String city){
+    public RegistrationPage setCity (String city){
         elemCity.setValue(city).pressEnter();
         return this;
     }
 
-    public BasePage clickSubmit (){
+    public RegistrationPage clickSubmit (){
         elemSubmit.click();
-        return this;
     }
 
 }
