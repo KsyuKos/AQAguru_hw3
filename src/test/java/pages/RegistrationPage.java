@@ -99,7 +99,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickSubmit (){
+    public void clickSubmit (){
         elemSubmit.click();
     }
 

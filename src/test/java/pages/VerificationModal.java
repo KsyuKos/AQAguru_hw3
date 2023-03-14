@@ -4,12 +4,11 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class VerificationModal {
 
-    private final SelenideElement
+    private static final SelenideElement
             tableResult = $x("//div[@class='table-responsive']"),
             fullName =  $x("//tr[contains(.,'Student Name')]/td[last()]"),
             emailAddress = $x("//tr[contains(.,'Student Email')]/td[last()]"),
@@ -22,18 +21,28 @@ public class VerificationModal {
             address = $x("//tr[contains(.,'Address')]/td[last()]"),
             stateAndCity = $x("//tr[contains(.,'State and City')]/td[last()]");
 
-    private void verificationModal (String args[]) {
+    //хочется аргументы в коллекцию запихнуть
+    public static void verificationModal(String checkFullName,
+                                         String checkEmail,
+                                         String checkGender,
+                                         String checkPhoneNumber,
+                                         String checkDayOfBirth,
+                                         String checkElemSubject,
+                                         String checkHobbies,
+                                         String checkPicture,
+                                         String checkAddress,
+                                         String checkStateAndCity) {
         tableResult.shouldBe(exist);
-        fullName.shouldHave(text("Kseniya Kosnyreva"));
-        emailAddress.shouldHave(text("kosnireva9469@gmail.com"));
-        gender.shouldHave(text("Female"));
-        phoneNumber.shouldHave(text("7961822211"));
-        dayOfBirth.shouldHave(text("09 March,2000"));
-        elemSubject.shouldHave(text("Economics"));
-        hobbies.shouldHave(text("Reading"));
-        picture.shouldHave(text("pic.png"));
-        address.shouldHave(text("Я гражданин мира"));
-        stateAndCity.shouldHave(text("Haryana Karnal"));
+        fullName.shouldHave(text(checkFullName));
+        emailAddress.shouldHave(text(checkEmail));
+        gender.shouldHave(text(checkGender));
+        phoneNumber.shouldHave(text(checkPhoneNumber));
+        dayOfBirth.shouldHave(text(checkDayOfBirth));
+        elemSubject.shouldHave(text(checkElemSubject));
+        hobbies.shouldHave(text(checkHobbies));
+        picture.shouldHave(text(checkPicture));
+        address.shouldHave(text(checkAddress));
+        stateAndCity.shouldHave(text(checkStateAndCity));
     }
 
 }
