@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.exactOwnText;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,7 +26,10 @@ public class RegistrationPage {
         elemCity = $x("//input[@id='react-select-4-input']"),
         elemSubmit = $x("//button[@id='submit']");
 
-    ElementsCollection dayBD = $$x("//div[@class= 'react-datepicker__week']//child::div[contains(@class, 'react-datepicker__day')]");
+    ElementsCollection
+            dayBD = $$x("//div[@class= 'react-datepicker__week']//child::div[contains(@class, 'react-datepicker__day')]"),
+            elemGender = $("#genterWrapper").$$("label.custom-control-label"),
+            elemHobbies = $("#hobbiesWrapper").$$("label.custom-control-label");
 
     public void openUrl(String url) {
         open(url);
@@ -50,7 +54,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender (String gender) {
-        $(byText(gender)).click();
+        elemGender.findBy(text(gender)).click();
         return this;
     }
 
@@ -74,7 +78,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobbies (String hobbies) {
-        $(byText(hobbies)).click();
+        elemHobbies.findBy(text(hobbies)).click();
         return this;
     }
 

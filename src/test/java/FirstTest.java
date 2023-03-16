@@ -6,7 +6,7 @@ import pages.RegistrationPage;
 
 import static Const.Constants.BASE_URL;
 import static Const.Constants.RESOURS_SRC;
-import static pages.VerificationModal.verificationModal;
+import static commands.VerificationModal.verificationModal;
 
 public class FirstTest {
 
@@ -59,7 +59,7 @@ public class FirstTest {
                 .clickSubmit();
 
         verificationModal(fullName, emailAddress, gender, phoneNumber, dayOfBirth,
-                elemSubject, hobbies, picture, currentAddress,stateAndCity);
+                elemSubject, hobbies, picture, currentAddress, stateAndCity);
 
 
     }
