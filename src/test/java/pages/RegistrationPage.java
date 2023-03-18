@@ -6,7 +6,6 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.exactOwnText;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
@@ -31,8 +30,12 @@ public class RegistrationPage {
             elemGender = $("#genterWrapper").$$("label.custom-control-label"),
             elemHobbies = $("#hobbiesWrapper").$$("label.custom-control-label");
 
-    public void openUrl(String url) {
+    public RegistrationPage openUrl(String url) {
         open(url);
+        return this;
+    }
+
+    public void closeBanners(){
         executeJavaScript("$('footer').css('position','relative')"); //костыльчик, просто убрать футер не помогло
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -62,7 +65,7 @@ public class RegistrationPage {
         phoneNumber.setValue(phone);
         return this;
     }
-//не понимаю, почему не вычищает поле даты
+
     public RegistrationPage setDate (String date, String month, String year ) {
         InputBD.click();
         monthBD.selectOptionContainingText(month);
@@ -97,7 +100,7 @@ public class RegistrationPage {
         elemState.setValue(state).pressEnter();
         return this;
     }
-//была мысль заверуть в условный оператор, учесть неактивность поля из-за невыбранного штата
+
     public RegistrationPage setCity (String city){
         elemCity.setValue(city).pressEnter();
         return this;

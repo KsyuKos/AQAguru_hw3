@@ -1,11 +1,14 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.RegistrationPage;
 
-import static Const.Constants.BASE_URL;
-import static Const.Constants.RESOURS_SRC;
+import java.util.ArrayList;
+
+import static configuration.Config.BASE_URL;
+import static configuration.Config.RESOURS_SRC;
 import static commands.VerificationModal.verificationModal;
 
 public class FirstTest {
@@ -42,7 +45,7 @@ public class FirstTest {
                 stateAndCity = elemState +" "+ elemCity;
 
 
-        registrationPage.openUrl("/automation-practice-form");
+        registrationPage.openUrl("/automation-practice-form").closeBanners();
 
         registrationPage.setFirstName(firstName)
                 .setLastName(lastName)
@@ -52,7 +55,7 @@ public class FirstTest {
                 .setDate(InputBD, monthBD, yearBD)
                 .setSubject(elemSubject)
                 .setHobbies(hobbies)
-                .uploadFiles(pictureSrc) //по хорошему часть пути нужно вынести в конфиг файл в ресурсы
+                .uploadFiles(pictureSrc)
                 .setCurrentAddress(currentAddress)
                 .setState(elemState)
                 .setCity(elemCity)

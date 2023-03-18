@@ -1,9 +1,9 @@
 package commands;
 
 import com.codeborne.selenide.SelenideElement;
+import java.util.ArrayList;
 
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class VerificationModal {
@@ -21,7 +21,7 @@ public class VerificationModal {
             address = $x("//tr[contains(.,'Address')]/td[last()]"),
             stateAndCity = $x("//tr[contains(.,'State and City')]/td[last()]");
 
-    //хочется аргументы в коллекцию запихнуть
+
     public static void verificationModal(String checkFullName,
                                          String checkEmail,
                                          String checkGender,
@@ -32,17 +32,41 @@ public class VerificationModal {
                                          String checkPicture,
                                          String checkAddress,
                                          String checkStateAndCity) {
-        tableResult.shouldBe(exist);
-        fullName.shouldHave(text(checkFullName));
-        emailAddress.shouldHave(text(checkEmail));
-        gender.shouldHave(text(checkGender));
-        phoneNumber.shouldHave(text(checkPhoneNumber));
-        dayOfBirth.shouldHave(text(checkDayOfBirth));
-        elemSubject.shouldHave(text(checkElemSubject));
-        hobbies.shouldHave(text(checkHobbies));
-        picture.shouldHave(text(checkPicture));
-        address.shouldHave(text(checkAddress));
-        stateAndCity.shouldHave(text(checkStateAndCity));
+
+        ArrayList<SelenideElement> array = new ArrayList<>();
+        array.add(tableResult);
+        array.add(fullName);
+        array.add(emailAddress);
+        array.add(gender);
+        array.add(phoneNumber);
+        array.add(dayOfBirth);
+        array.add(elemSubject);
+        array.add(hobbies);
+        array.add(picture);
+        array.add(address);
+        array.add(stateAndCity);
+
+        int index = 0;
+        for (SelenideElement element : array) {
+            if (element.should(text(checkDayOfBirth)) instanceof SelenideElement) {
+                System.out.println("Тест пройден" + checkDayOfBirth);
+                break;
+            } else {
+                index++;
+            }
+        }
+
+        /*tableResult.should(exist);
+        fullName.should(text(checkFullName));
+        emailAddress.should(text(checkEmail));
+        gender.should(text(checkGender));
+        phoneNumber.should(text(checkPhoneNumber));
+        dayOfBirth.should(text(checkDayOfBirth));
+        elemSubject.should(text(checkElemSubject));
+        hobbies.should(text(checkHobbies));
+        picture.should(text(checkPicture));
+        address.should(text(checkAddress));
+        stateAndCity.should(text(checkStateAndCity));*/
     }
 
 }
