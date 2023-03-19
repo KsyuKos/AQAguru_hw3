@@ -1,11 +1,8 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.RegistrationPage;
-
-import java.util.ArrayList;
 
 import static configuration.Config.BASE_URL;
 import static configuration.Config.RESOURS_SRC;
@@ -61,9 +58,15 @@ public class FirstTest {
                 .setCity(elemCity)
                 .clickSubmit();
 
-        verificationModal(fullName, emailAddress, gender, phoneNumber, dayOfBirth,
-                elemSubject, hobbies, picture, currentAddress, stateAndCity);
-
-
+        verificationModal(fullName);
+        verificationModal(emailAddress);
+        verificationModal(gender);
+        verificationModal(phoneNumber);
+        verificationModal(dayOfBirth);
+        verificationModal(elemSubject);
+        verificationModal(hobbies);
+        verificationModal(picture);
+        verificationModal(currentAddress);
+        verificationModal(stateAndCity);
     }
 }
