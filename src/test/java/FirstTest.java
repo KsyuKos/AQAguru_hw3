@@ -1,12 +1,10 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.RegisrationModalWindow;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Selenide.$x;
 import static commands.VerificationModal.existModal;
 import static configuration.Config.BASE_URL;
 import static configuration.Config.RESOURS_SRC;
