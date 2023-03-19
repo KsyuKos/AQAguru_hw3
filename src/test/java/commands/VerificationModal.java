@@ -5,13 +5,13 @@ import static com.codeborne.selenide.Condition.*;
 
 public class VerificationModal {
 
-    public static void verificationModal(SelenideElement label, String field) {
-        label.should(text(field));
-        System.out.println("Тест пройден " + field);
+    public static void checkExistModal(SelenideElement label) {
+        label.should(exist);
     }
 
-    public static void existModal(SelenideElement label) {
-        label.should(exist);
+    public static void checkVerificationModal(SelenideElement label, String field) {
+        label.should(text(field));
+        System.out.println("Тест пройден " + field);
     }
 
 }

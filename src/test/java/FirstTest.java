@@ -1,22 +1,16 @@
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
 import pages.RegisrationModalWindow;
 import pages.RegistrationPage;
 
-import static commands.VerificationModal.existModal;
-import static configuration.Config.BASE_URL;
-import static configuration.Config.RESOURS_SRC;
-import static commands.VerificationModal.verificationModal;
+import static commands.VerificationModal.*;
+import static configuration.Config.*;
 
 public class FirstTest {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = BASE_URL;
-        Configuration.browserSize = "1920x1080";
-        Configuration.browserCapabilities = new ChromeOptions().addArguments("--remote-allow-origins=*");
+        setConfiguration();
     }
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -34,17 +28,17 @@ public class FirstTest {
                 InputBD = "9",
                 monthBD = "March",
                 yearBD = "2000",
-                dayOfBirth = InputBD +" "+ monthBD+","+ yearBD,
+                dayOfBirth = InputBD + " " + monthBD + "," + yearBD,
                 elemSubject = "Economics",
                 hobbies = "Reading",
-                picture =  "pic.png",
-                pictureSrc = RESOURS_SRC + "pic.png",
+                picture = "pic.png",
+                pictureSrc = resourceSrc + "pic.png",
                 currentAddress = "Я гражданин мира",
                 elemState = "Haryana",
                 elemCity = "Karnal",
-                stateAndCity = elemState +" "+ elemCity;
+                stateAndCity = elemState + " " + elemCity;
 
-        registrationPage.openUrl("/automation-practice-form").closeBanners();
+        registrationPage.openUrl().closeBanners();
 
         registrationPage.setFirstName(firstName)
                 .setLastName(lastName)
@@ -60,16 +54,16 @@ public class FirstTest {
                 .setCity(elemCity)
                 .clickSubmit();
 
-        existModal(modalWindow.getTableResult());
-        verificationModal(modalWindow.getFullName(),fullName);
-        verificationModal(modalWindow.getEmailAddress(),emailAddress);
-        verificationModal(modalWindow.getGender(),gender);
-        verificationModal(modalWindow.getPhoneNumber(),phoneNumber);
-        verificationModal(modalWindow.getDayOfBirth(),dayOfBirth);
-        verificationModal(modalWindow.getElemSubject(),elemSubject);
-        verificationModal(modalWindow.getHobbies(),hobbies);
-        verificationModal(modalWindow.getPicture(),picture);
-        verificationModal(modalWindow.getAddress(),currentAddress);
-        verificationModal(modalWindow.getStateAndCity(),stateAndCity);
+        checkExistModal(modalWindow.getTableResult());
+        checkVerificationModal(modalWindow.getFullName(), fullName);
+        checkVerificationModal(modalWindow.getEmailAddress(), emailAddress);
+        checkVerificationModal(modalWindow.getGender(), gender);
+        checkVerificationModal(modalWindow.getPhoneNumber(), phoneNumber);
+        checkVerificationModal(modalWindow.getDayOfBirth(), dayOfBirth);
+        checkVerificationModal(modalWindow.getElemSubject(), elemSubject);
+        checkVerificationModal(modalWindow.getHobbies(), hobbies);
+        checkVerificationModal(modalWindow.getPicture(), picture);
+        checkVerificationModal(modalWindow.getAddress(), currentAddress);
+        checkVerificationModal(modalWindow.getStateAndCity(), stateAndCity);
     }
 }
