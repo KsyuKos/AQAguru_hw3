@@ -1,9 +1,13 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.RegisrationModalWindow;
 import pages.RegistrationPage;
 
+import static com.codeborne.selenide.Selenide.$x;
+import static commands.VerificationModal.existModal;
 import static configuration.Config.BASE_URL;
 import static configuration.Config.RESOURS_SRC;
 import static commands.VerificationModal.verificationModal;
@@ -18,6 +22,7 @@ public class FirstTest {
     }
 
     RegistrationPage registrationPage = new RegistrationPage();
+    RegisrationModalWindow modalWindow = new RegisrationModalWindow();
 
     @Test
     void firstEnterTest() {
@@ -41,7 +46,6 @@ public class FirstTest {
                 elemCity = "Karnal",
                 stateAndCity = elemState +" "+ elemCity;
 
-
         registrationPage.openUrl("/automation-practice-form").closeBanners();
 
         registrationPage.setFirstName(firstName)
@@ -58,15 +62,16 @@ public class FirstTest {
                 .setCity(elemCity)
                 .clickSubmit();
 
-        verificationModal(fullName);
-        verificationModal(emailAddress);
-        verificationModal(gender);
-        verificationModal(phoneNumber);
-        verificationModal(dayOfBirth);
-        verificationModal(elemSubject);
-        verificationModal(hobbies);
-        verificationModal(picture);
-        verificationModal(currentAddress);
-        verificationModal(stateAndCity);
+        existModal(modalWindow.getTableResult());
+        verificationModal(modalWindow.getFullName(),fullName);
+        verificationModal(modalWindow.getEmailAddress(),emailAddress);
+        verificationModal(modalWindow.getGender(),gender);
+        verificationModal(modalWindow.getPhoneNumber(),phoneNumber);
+        verificationModal(modalWindow.getDayOfBirth(),dayOfBirth);
+        verificationModal(modalWindow.getElemSubject(),elemSubject);
+        verificationModal(modalWindow.getHobbies(),hobbies);
+        verificationModal(modalWindow.getPicture(),picture);
+        verificationModal(modalWindow.getAddress(),currentAddress);
+        verificationModal(modalWindow.getStateAndCity(),stateAndCity);
     }
 }

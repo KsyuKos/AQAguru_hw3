@@ -11,21 +11,21 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     private final SelenideElement
-        firstName =  $("#firstName"),
-        lastName = $("#lastName"),
-        emailAddress = $("#userEmail"),
-        phoneNumber = $x("//input[@id='userNumber']"),
-        InputBD = $x("//input[@id='dateOfBirthInput']"),
-        monthBD = $x("//select[@class='react-datepicker__month-select']"),
-        yearBD = $x("//select[@class='react-datepicker__year-select']"),
-        elemSubject = $x("//input[@id='subjectsInput']"),
-        picture = $("#uploadPicture"),
-        currentAddress = $x("//textarea[@id='currentAddress']"),
-        elemState = $x("//input[@id='react-select-3-input']"),
-        elemCity = $x("//input[@id='react-select-4-input']"),
-        elemSubmit = $x("//button[@id='submit']");
+            firstName = $("#firstName"),
+            lastName = $("#lastName"),
+            emailAddress = $("#userEmail"),
+            phoneNumber = $x("//input[@id='userNumber']"),
+            InputBD = $x("//input[@id='dateOfBirthInput']"),
+            monthBD = $x("//select[@class='react-datepicker__month-select']"),
+            yearBD = $x("//select[@class='react-datepicker__year-select']"),
+            elemSubject = $x("//input[@id='subjectsInput']"),
+            picture = $("#uploadPicture"),
+            currentAddress = $x("//textarea[@id='currentAddress']"),
+            elemState = $x("//input[@id='react-select-3-input']"),
+            elemCity = $x("//input[@id='react-select-4-input']"),
+            elemSubmit = $x("//button[@id='submit']");
 
-    ElementsCollection
+    private final ElementsCollection
             dayBD = $$x("//div[@class= 'react-datepicker__week']//child::div[contains(@class, 'react-datepicker__day')]"),
             elemGender = $("#genterWrapper").$$("label.custom-control-label"),
             elemHobbies = $("#hobbiesWrapper").$$("label.custom-control-label");
