@@ -31,7 +31,7 @@ public class RegistrationPage {
             elemGender = $x("//div[@id='genterWrapper']").$$x("*//label[contains(@class, 'custom-control-label')]"),
             elemHobbies = $x("//div[@id='hobbiesWrapper']").$$x("*//label[contains(@class, 'custom-control-label')]");
 
-    public RegistrationPage openUrl() {
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         return this;
     }

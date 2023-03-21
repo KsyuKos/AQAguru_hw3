@@ -38,7 +38,7 @@ public class FirstTest {
                 elemCity = "Karnal",
                 stateAndCity = elemState + " " + elemCity;
 
-        registrationPage.openUrl().closeBanners();
+        registrationPage.openPage().closeBanners();
 
         registrationPage.setFirstName(firstName)
                 .setLastName(lastName)

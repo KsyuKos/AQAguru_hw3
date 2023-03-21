@@ -11,7 +11,7 @@ public class VerificationModal {
 
     public static void checkVerificationModal(SelenideElement label, String field) {
         label.should(text(field));
-        System.out.println("Тест пройден " + field);
+        System.out.println("Тест пройден. Значение " + label.getText() + " равно значению " + field);
     }
 
 }
